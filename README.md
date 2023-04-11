@@ -36,7 +36,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email majd.m4a4@gmail. instead of using the issue tracker.
+If you discover any security related issues, please email majd.m4a4@gmail.com instead of using the issue tracker.
 
 ## Credits
 

@@ -1,0 +1,5 @@
+{
+    "intelephense.diagnostics.argumentCount": false,
+    "intelephense.diagnostics.deprecated": false,
+    "intelephense.diagnostics.duplicateSymbols": false
+}

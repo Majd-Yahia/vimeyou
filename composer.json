@@ -1,0 +1,54 @@
+{
+    "name": "awesomchu/vimeyou",
+    "description": "Public package for vimeo and youtube integrations",
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "keywords": [
+        "awesomchu",
+        "integrations",
+        "vimeo",
+        "youtube"
+    ],
+    "homepage": "https://github.com/awesomchu/vimeyou",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Majd Yahia",
+            "email": "majd.m4a4@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Awesomchu\\Vimeo\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Awesomchu\\Vimeo\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Awesomchu\\Vimeo\\VimeoyouServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}

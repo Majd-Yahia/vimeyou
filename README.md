@@ -11,7 +11,7 @@ This is where your description should go. Try and limit it to a paragraph or two
 You can install the package via composer:
 
 ```bash
-composer require nurinteractive/whatsapp-cloud-api
+composer require awesomchu/vimeyou
 ```
 
 ## Usage
@@ -36,11 +36,11 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email suhaib@nurinteractive.com instead of using the issue tracker.
+If you discover any security related issues, please email majd.m4a4@gmail. instead of using the issue tracker.
 
 ## Credits
 
--   [Suhaib Shakra](https://github.com/nurinteractive)
+-   [Majd Yahia](https://github.com/Majd-Yahia)
 -   [All Contributors](../../contributors)
 
 ## License

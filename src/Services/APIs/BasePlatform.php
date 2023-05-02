@@ -17,9 +17,9 @@ abstract class BasePlatform implements VideoAPIInterface
     /**
      * Setup (contains configuration)
      *
-     * @param string
+     * @param array
      */
-    protected string $setup;
+    protected array $setup;
 
     /**
      * Constructor
@@ -28,16 +28,8 @@ abstract class BasePlatform implements VideoAPIInterface
      */
     public function __construct(protected Client $client)
     {
-        $this->setup = config(self::PREFIX . $this->getNameSpace());
+        $this->setup = config(self::PREFIX . '.' . $this->getNameSpace());
     }
-
-     /**
-     * The base endpoint to which an api is pointing at.
-     *
-     *
-     * @return string
-     */
-    abstract public function getEndPiont(): string;
 
     /**
      * Namespace to which service it should connect
@@ -49,4 +41,12 @@ abstract class BasePlatform implements VideoAPIInterface
     {
         return str_replace('api', '', strtolower(class_basename($this::class)));
     }
+
+    /**
+     * The base endpoint to which an api is pointing at.
+     *
+     *
+     * @return string
+     */
+    abstract public function getEndPiont(): string;
 }

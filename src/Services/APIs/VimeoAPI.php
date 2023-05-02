@@ -68,8 +68,8 @@ class VimeoAPI extends BasePlatform
      */
     public function uploadVideo(string $filePath, string $title, string $description)
     {
-        /* 
-        Vimeo steps needed to upload a video:
+        /*
+            Vimeo steps needed to upload a video:
             1. Generate the required data for the video placeholder
                 - Size
                 - Approach

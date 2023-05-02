@@ -8,7 +8,7 @@ class VideoService
 {
     public function __construct(protected BasePlatform $platform)
     {
-       dd($platform->getEndPiont());
+       
     }
 
     /**

@@ -1,11 +1,8 @@
 <?php
-
 namespace Awesomchu\Vimeo\Services\APIs;
 
-class YoutubeAPI extends BaseAPI
+class YoutubeAPI extends BasePlatform
 {
-    protected string $config = 'vimeo';
-
     /**
      * The base endpoint to which an api is pointing at.
      *

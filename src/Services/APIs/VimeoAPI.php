@@ -1,10 +1,7 @@
 <?php
-
 namespace Awesomchu\Vimeo\Services\APIs;
 
-use Awesomchu\Vimeo\Services\VideoAPIInterface;
-
-class VimeoAPI implements VideoAPIInterface
+class VimeoAPI extends BasePlatform
 {
     /**
      * The base endpoint to which an api is pointing at.

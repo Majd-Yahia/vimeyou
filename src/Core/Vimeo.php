@@ -9,6 +9,7 @@ use Awesomchu\Vimeo\Exceptions\VimeoConfigurationNotFoundException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Awesomchu\Vimeo\Events\UploadVideoEvent;
+use Awesomchu\Vimeo\Exceptions\GeneralException;
 use Awesomchu\Vimeo\Exceptions\VimeoGeneralException;
 use Illuminate\Support\Str;
 use Illuminate\Http\Response;
@@ -65,13 +66,13 @@ class Vimeo implements VimeoInterface
      * __construct
      *
      * @return void
-     * @throws VimeoGeneralException
+     * @throws GeneralException
      */
     public function __construct(protected Client $client)
     {
         $this->config = config('vimeo.connection');
         if (!isset($this->config['client_access'])) {
-            throw new VimeoGeneralException(message: 'Configurations not found!', code: Response::HTTP_NOT_ACCEPTABLE);
+            throw new GeneralException(message: 'Configurations not found!', code: Response::HTTP_NOT_ACCEPTABLE);
         }
 
         $this->headers["Authorization"] = 'Bearer ' . $this->config['client_access'];
@@ -85,7 +86,7 @@ class Vimeo implements VimeoInterface
                 'json' => ['name' => $tag]
             ]);
         } catch (RequestException $e) {
-            throw new VimeoGeneralException(message: $e->getMessage(), code: $e->getCode());
+            throw new GeneralException(message: $e->getMessage(), code: $e->getCode());
         }
     }
 
@@ -117,7 +118,7 @@ class Vimeo implements VimeoInterface
         $this->tags($videoId, 'put', 'temp');
 
         // $this->_whitelist_domain($data['response']['uri']);
-        event(new UploadVideoEvent(approach: $approach, data: $data));
+        // event(new UploadVideoEvent(approach: $approach, data: $data));
 
 
         return $videoId;

@@ -2,15 +2,21 @@
 
 namespace Awesomchu\Vimeo\Services\APIs;
 
-use Awesomchu\Vimeo\Services\VideoAPIInterface;
-
-class YoutubeAPI implements VideoAPIInterface
+class YoutubeAPI extends BaseAPI
 {
+    protected string $config = 'vimeo';
 
-    public function __construct()
+    /**
+     * The base endpoint to which an api is pointing at.
+     *
+     * 
+     * @return string
+     */
+    public function getEndPiont(): string
     {
+        return "";
     }
-    
+
     /**
      * Get a list of videos from the specified channel
      *
@@ -53,5 +59,12 @@ class YoutubeAPI implements VideoAPIInterface
      */
     public function uploadVideo(string $filePath, string $title, string $description)
     {
+        /* 
+        Vimeo steps needed to upload a video:
+            1. Generate the required data for the video placeholder
+                - Size
+                - Approach
+            2. Start uploading the video (Via the different approaches)
+        */
     }
 }

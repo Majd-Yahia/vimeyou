@@ -16,6 +16,7 @@ class VideoService
      *
      * @param int|string $identifier The ID of the channel to get videos from
      * @param int $maxResults The maximum number of results to return
+     * 
      * @return array An array of video objects
      *
      * @throws GeneralException
@@ -29,6 +30,7 @@ class VideoService
      * Get details for a specific video
      *
      * @param int|string $videoId The ID of the video to get details for
+     * 
      * @return object A video object with details
      *
      * @throws GeneralException
@@ -43,6 +45,7 @@ class VideoService
      *
      * @param string $query The query to search in the platform
      * @param int $maxResults max results
+     * 
      * @return array An array of video objects
      *
      * @throws GeneralException
@@ -58,6 +61,7 @@ class VideoService
      * @param string $filePath the location of the file on the system
      * @param string $title the title of the video uploaded
      * @param string $description the description of the video.
+     * 
      * @return Response $response of the transaction made.
      *
      * @throws GeneralException

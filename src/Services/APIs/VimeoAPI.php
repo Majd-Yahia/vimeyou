@@ -6,7 +6,6 @@ class VimeoAPI extends BasePlatform
     /**
      * The base endpoint to which an api is pointing at.
      *
-     * 
      * @return string
      */
     public function getEndPiont(): string

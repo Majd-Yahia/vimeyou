@@ -34,7 +34,6 @@ abstract class BasePlatform implements VideoAPIInterface
     /**
      * Namespace to which service it should connect
      *
-     *
      * @return string
      */
     public function getNameSpace(): string
@@ -44,7 +43,6 @@ abstract class BasePlatform implements VideoAPIInterface
 
     /**
      * The base endpoint to which an api is pointing at.
-     *
      *
      * @return string
      */

@@ -31,18 +31,7 @@ abstract class BaseAPI implements VideoAPIInterface
      */
     public function __construct(protected Client $client)
     {
-        
-    }
-
-    /**
-     * Create a instance of self.
-     *
-     * @return self
-     */
-    public static function create(): self
-    {
-        self::$setup = config(self::PREFIX . self::getNameSpace());
-        return new self;
+        $this->setup = config(self::PREFIX . $this->getNameSpace());
     }
 
      /**

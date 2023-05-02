@@ -6,14 +6,6 @@ use Awesomchu\Vimeo\Services\VideoAPIInterface;
 
 class VimeoAPI implements VideoAPIInterface
 {
-
-    /**
-     * The base endpoint to which an api is pointing at.
-     *
-     * @param string
-     */
-    protected $endPoint = "https://api.vimeo.com/";
-
     /**
      * The base endpoint to which an api is pointing at.
      *

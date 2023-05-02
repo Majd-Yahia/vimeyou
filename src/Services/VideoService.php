@@ -6,6 +6,7 @@ class VideoService
 {
     public function __construct(protected VideoAPIInterface $platform)
     {
+       dd(123);
     }
 
     /**

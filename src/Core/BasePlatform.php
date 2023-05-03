@@ -1,11 +1,12 @@
 <?php
-namespace Awesomchu\Vimeo\Services\APIs;
+namespace Awesomchu\Vimeo\Core;
 
+use Awesomchu\Vimeo\Core\Interface\VideoInterface;
 use Awesomchu\Vimeo\Exceptions\GeneralException;
-use Awesomchu\Vimeo\Services\VideoAPIInterface;
+use Awesomchu\Vimeo\Services\ClientService;
 use GuzzleHttp\Client;
 
-abstract class BasePlatform implements VideoAPIInterface
+abstract class BasePlatform implements VideoInterface
 {
     /**
      * Prefix for configuration
@@ -24,11 +25,13 @@ abstract class BasePlatform implements VideoAPIInterface
     /**
      * Constructor
      *
-     * @param Client $client
+     * @param ClientService $client
      */
-    public function __construct(protected Client $client)
+    public function __construct(protected ClientService $client)
     {
         $this->setup = config(self::PREFIX . '.' . $this->getNameSpace());
+
+        $client->setURI($this->getEndPiont());
     }
 
     /**
@@ -38,7 +41,7 @@ abstract class BasePlatform implements VideoAPIInterface
      */
     public function getNameSpace(): string
     {
-        return str_replace('api', '', strtolower(class_basename($this::class)));
+        return strtolower(class_basename($this::class));
     }
 
     /**

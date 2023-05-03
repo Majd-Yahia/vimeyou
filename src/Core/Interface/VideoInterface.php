@@ -1,8 +1,7 @@
 <?php
+namespace Awesomchu\Vimeo\Core\Interface;
 
-namespace Awesomchu\Vimeo\Services;
-
-interface VideoAPIInterface
+interface VideoInterface
 {
     /**
      * Get a list of videos from the specified channel

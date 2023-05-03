@@ -1,7 +1,9 @@
 <?php
-namespace Awesomchu\Vimeo\Services\APIs;
+namespace Awesomchu\Vimeo\Core\Platforms;
 
-class YoutubeAPI extends BasePlatform
+use Awesomchu\Vimeo\Services\APIs\BasePlatform;
+
+class Youtube extends BasePlatform
 {
     /**
      * The base endpoint to which an api is pointing at.

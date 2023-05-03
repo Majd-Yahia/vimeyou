@@ -1,7 +1,9 @@
 <?php
-namespace Awesomchu\Vimeo\Services\APIs;
+namespace Awesomchu\Vimeo\Core\Platforms;
 
-class VimeoAPI extends BasePlatform
+use Awesomchu\Vimeo\Services\APIs\BasePlatform;
+
+class Vimeo extends BasePlatform
 {
     /**
      * The base endpoint to which an api is pointing at.
@@ -67,6 +69,9 @@ class VimeoAPI extends BasePlatform
      */
     public function uploadVideo(string $filePath, string $title, string $description)
     {
+
+        dd($this, $this->setup);
+        
         /*
             Vimeo steps needed to upload a video:
             1. Generate the required data for the video placeholder

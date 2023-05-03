@@ -1,8 +1,7 @@
 <?php
-
 namespace Awesomchu\Vimeo\Services;
 
-use Awesomchu\Vimeo\Services\APIs\BasePlatform;
+use Awesomchu\Vimeo\Core\BasePlatform;
 
 class VideoService
 {

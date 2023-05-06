@@ -2,7 +2,11 @@
 
 namespace Awesomchu\Vimeo\Platform;
 
+use Awesomchu\Vimeo\Exceptions\GeneralException;
 use Awesomchu\Vimeo\Platform\Interface\VideoInterface;
+use Awesomchu\Vimeo\Platform\Jobs\StreamVideoJob;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Storage;
 use GuzzleHttp\Client;
 
 class Vimeo implements VideoInterface
@@ -86,16 +90,47 @@ class Vimeo implements VideoInterface
      * 
      * @throws GeneralException
      */
-    public function uploadVideo(string $filePath, string $title, string $description)
+    public function uploadVideo(string $filePath, string $title, string $description, $options = [])
     {
-        /*
-            Vimeo steps needed to upload a video:
-            1. Generate the required data for the video placeholder
-                - Size
-                - Approach
-            2. Send an api to reserve a placeholder for the video that returns the video ID
-            3. Tag the video if you want.
-            4. Start uploading the video (Via the different approaches)
-        */
+        // Step 1: Generate required data for the video placeholder
+        $body = array_merge([
+            'name' => $title,
+            'description' => $description,
+            'upload' => [
+                'size' => Storage::size($filePath),
+                'approach' => 'tus',
+            ]
+        ], $options);
+
+        $headers = ['Content-Type' => 'application/json'];
+
+        // Step 2: Send an API request to reserve a placeholder for the video and get the video ID
+        $response = $this->createVideoPlaceHolder(body: $body, headers: $headers);
+
+        // Step 4: Start uploading the video (streaming)
+        dd($response);
+        $uri = $chunkSize = $offset = 0;
+
+        // Create an instance of the StreamVideoJob
+        $streamVideoJob = new StreamVideoJob($uri, $filePath, $chunkSize, $offset);
+
+        // Dispatch the job to the queue system for background processing
+        dispatch($streamVideoJob);
+    }
+
+    private function createVideoPlaceHolder(array $body = [], $headers = [])
+    {
+        try {
+            // Send a POST request to the Vimeo API to create a new video placeholder
+            $attempt = $this->client->post($this->setup['uri'] . 'me/videos', [
+                "headers" => array_merge($headers),
+                'json' => $body,
+            ]);
+
+            // Get the upload link from the response
+            return json_decode($attempt->getBody(), true);
+        } catch (RequestException $e) {
+            throw new GeneralException(message: $e->getMessage(), code: $e->getCode());
+        }
     }
 }

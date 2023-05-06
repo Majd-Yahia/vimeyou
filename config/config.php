@@ -25,7 +25,7 @@ return [
     * and this configuration value sets the size of each chunk. The default value is 5 MB (5 * 1024 * 1024 bytes). 
     * You can adjust this value to optimize the upload performance based on your specific use case and network conditions.
     */
-    "chunk" => env('UPLOAD_CHUNKS', 5 * 1024 * 1024),
+    "chunk_size" => env('UPLOAD_CHUNKS', 5 * 1024 * 1024),
 
     // TODO:: Add more description here.
     "uri" => "https://api.vimeo.com/",

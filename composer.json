@@ -23,7 +23,10 @@
     "autoload": {
         "psr-4": {
             "Awesomchu\\Vimeo\\": "src"
-        }
+        },
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

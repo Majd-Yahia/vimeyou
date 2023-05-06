@@ -39,10 +39,9 @@ return [
     * https://vimeo.com | See their documentation for more information https://developer.vimeo.com/api/guides/start
     * IMPORTANT: if you want to use this package and have not provided any credentials the VideoService provider will return an exceptions
     */
-    "vimeo" => [
-        "client_id" => env("VIMEO_CLIENT_ID", null),
-        "client_secret" => env("VIMEO_CLIENT_SECRET", null),
-        "client_access" => env("VIMEO_CLIENT_ACCESS", null),
-    ],
-
+    // "vimeo" => [
+    //     "id" => env("VIMEO_ID", null),
+    //     "secret" => env("VIMEO_SECRET", null),
+    //     "access" => env("VIMEO_ACCESS", null),
+    // ],
 ];

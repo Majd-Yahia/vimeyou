@@ -1,5 +1,5 @@
 <?php
-namespace Awesomchu\Vimeo\Core\Interface;
+namespace Awesomchu\Vimeo\Platform\Interface;
 
 interface VideoInterface
 {

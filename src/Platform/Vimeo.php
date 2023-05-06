@@ -1,9 +1,9 @@
 <?php
 
-namespace Awesomchu\Vimeo\Core\Platform;
+namespace Awesomchu\Vimeo\Platform;
 
-use Awesomchu\Vimeo\Core\Interface\VideoInterface;
-use Awesomchu\Vimeo\Services\ClientService;
+use Awesomchu\Vimeo\Platform\Interface\VideoInterface;
+use GuzzleHttp\Client;
 
 class Vimeo implements VideoInterface
 {
@@ -26,17 +26,12 @@ class Vimeo implements VideoInterface
      *
      * @param ClientService $client
      */
-    public function __construct(protected ClientService $client)
+    public function __construct(protected Client $client)
     {
         /**
          * Authentication for vimeo must be in services
          */
         $this->setup = config('services.vimeo');
-
-        /**
-         * Grab uri from the configuration file.
-         */
-        $client->setURI(self::PREFIX . '.uri');
     }
 
     /**

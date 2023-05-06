@@ -1,8 +1,8 @@
 <?php
 namespace Awesomchu\Vimeo\Services;
 
+use Awesomchu\Vimeo\Platform\Vimeo;
 use Illuminate\Support\Facades\Facade;
-use Vimeo\Vimeo;
 
 class VimeoFacade extends Facade
 {

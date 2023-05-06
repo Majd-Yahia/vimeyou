@@ -75,7 +75,10 @@ class VimeoyouServiceProvider extends ServiceProvider
 
         $this->app->register(EventServiceProvider::class);
 
-        $this->app->bind('Vimeo', VimeoFacade::class);
+        // Register the main class to use with the facade
+        $this->app->bind('vimeo', function () {
+            return new VimeoFacade();
+        });
 
         // Register the main class to use with the facade
         // $this->app->singleton('vimeo', function () {
@@ -105,6 +108,5 @@ class VimeoyouServiceProvider extends ServiceProvider
 
     public function publishMigrationsThroghModule()
     {
-        
     }
 }

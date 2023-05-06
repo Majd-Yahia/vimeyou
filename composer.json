@@ -45,7 +45,7 @@
             ],
             "aliases":
             {
-                "Vimeo": "Awesomchu\\Vimeo\\Services\\FluidSchemaFacade"
+                "Vimeo": "Awesomchu\\Vimeo\\Services\\VimeoFacade"
             }
         }
     },

@@ -42,7 +42,11 @@
         "laravel": {
             "providers": [
                 "Awesomchu\\Vimeo\\VimeoyouServiceProvider"
-            ]
+            ],
+            "aliases":
+            {
+                "Vimeo": "Awesomchu\\Vimeo\\Services\\FluidSchemaFacade"
+            }
         }
     },
     "require-dev": {

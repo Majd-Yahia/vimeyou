@@ -2,6 +2,8 @@
 
 namespace Awesomchu\Vimeo;
 
+use Awesomchu\Vimeo\Core\Platform\Vimeo;
+use Awesomchu\Vimeo\Services\VimeoFacade;
 use Illuminate\Support\ServiceProvider;
 
 class VimeoyouServiceProvider extends ServiceProvider
@@ -72,6 +74,8 @@ class VimeoyouServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'vimeoyou');
 
         $this->app->register(EventServiceProvider::class);
+
+        $this->app->bind('Vimeo', VimeoFacade::class);
 
         // Register the main class to use with the facade
         // $this->app->singleton('vimeo', function () {

@@ -1,5 +1,7 @@
 <?php
+
 namespace Awesomchu\Vimeo\Core\Platform;
+
 use Awesomchu\Vimeo\Core\Interface\VideoInterface;
 use Awesomchu\Vimeo\Services\ClientService;
 
@@ -18,7 +20,7 @@ class Vimeo implements VideoInterface
      * @param array
      */
     protected array $setup;
-    
+
     /**
      * Constructor
      *
@@ -26,7 +28,14 @@ class Vimeo implements VideoInterface
      */
     public function __construct(protected ClientService $client)
     {
+        /**
+         * Authentication for vimeo must be in services
+         */
         $this->setup = config('services.vimeo');
+
+        /**
+         * Grab uri from the configuration file.
+         */
         $client->setURI(self::PREFIX . '.uri');
     }
 

@@ -1,18 +1,33 @@
 <?php
-namespace Awesomchu\Vimeo\Core\Platforms;
+namespace Awesomchu\Vimeo\Core\Platform;
+use Awesomchu\Vimeo\Core\Interface\VideoInterface;
+use Awesomchu\Vimeo\Services\ClientService;
 
-use Awesomchu\Vimeo\Services\APIs\BasePlatform;
-
-class Vimeo extends BasePlatform
+class Vimeo implements VideoInterface
 {
     /**
-     * The base endpoint to which an api is pointing at.
+     * Prefix for configuration
      *
-     * @return string
+     * @param string
      */
-    public function getEndPiont(): string
+    protected const PREFIX = 'vimeoyou';
+
+    /**
+     * Setup (contains configuration)
+     *
+     * @param array
+     */
+    protected array $setup;
+    
+    /**
+     * Constructor
+     *
+     * @param ClientService $client
+     */
+    public function __construct(protected ClientService $client)
     {
-        return "https://api.vimeo.com/";
+        $this->setup = config('services.vimeo');
+        $client->setURI(self::PREFIX . '.uri');
     }
 
     /**
@@ -69,9 +84,6 @@ class Vimeo extends BasePlatform
      */
     public function uploadVideo(string $filePath, string $title, string $description)
     {
-
-        dd($this, $this->setup);
-        
         /*
             Vimeo steps needed to upload a video:
             1. Generate the required data for the video placeholder

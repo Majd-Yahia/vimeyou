@@ -6,37 +6,6 @@
 return [
 
     /*
-    * Vimeo: Contains Credentials
-    * =======================================================
-    * This is where vimeo credintials are added.
-    * You can visit their website to create a user
-    * and grab those values from
-    * https://vimeo.com | See their documentation for more information https://developer.vimeo.com/api/guides/start
-    * IMPORTANT: if you want to use this package and have not provided any credentials the VideoService provider will return an exceptions
-    */
-    "vimeo" => [
-        "client_id" => env("VIMEO_CLIENT_ID", null),
-        "client_secret" => env("VIMEO_CLIENT_SECRET", null),
-        "client_access" => env("VIMEO_CLIENT_ACCESS", null),
-    ],
-
-    // TODO:: Add the correct credentials to youtube and change the description to match youtube.
-    /*
-    * Youtube: Contains Credentials
-    * =======================================================
-    * This is where youtube credintials are added.
-    * You can visit their website to create a user
-    * and grab those values from
-    *
-    * IMPORTANT: if you want to use this package and have not provided any credentials the VideoService provider will return an exceptions
-    */
-    "youtube" => [
-        "client_id" => env("VIMEO_CLIENT_ID", null),
-        "client_secret" => env("VIMEO_CLIENT_SECRET", null),
-        "client_access" => env("VIMEO_CLIENT_ACCESS", null),
-    ],
-
-    /*
     * Upload Progress: Controls if the uploaded video returns progress as an SSE (Server Side Event)
     * =======================================================
     * This configuration option enables the return of the progress or percentage of a video being uploaded to any supported platform. 
@@ -57,4 +26,23 @@ return [
     * You can adjust this value to optimize the upload performance based on your specific use case and network conditions.
     */
     "chunk" => env('UPLOAD_CHUNKS', 5 * 1024 * 1024),
+
+    // TODO:: Add more description here.
+    "uri" => "https://api.vimeo.com/",
+
+    /*
+    * Vimeo: Contains Credentials
+    * =======================================================
+    * This is where vimeo credintials are added.
+    * You can visit their website to create a user
+    * and grab those values from
+    * https://vimeo.com | See their documentation for more information https://developer.vimeo.com/api/guides/start
+    * IMPORTANT: if you want to use this package and have not provided any credentials the VideoService provider will return an exceptions
+    */
+    "vimeo" => [
+        "client_id" => env("VIMEO_CLIENT_ID", null),
+        "client_secret" => env("VIMEO_CLIENT_SECRET", null),
+        "client_access" => env("VIMEO_CLIENT_ACCESS", null),
+    ],
+
 ];

@@ -5,9 +5,9 @@ namespace Awesomchu\Vimeo\Platform;
 use Awesomchu\Vimeo\Exceptions\GeneralException;
 use Awesomchu\Vimeo\Platform\Interface\VideoInterface;
 use Awesomchu\Vimeo\Platform\Jobs\StreamVideoJob;
+use Awesomchu\Vimeo\Services\ClientService;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Storage;
-use GuzzleHttp\Client;
 
 class Vimeo implements VideoInterface
 {
@@ -30,7 +30,7 @@ class Vimeo implements VideoInterface
      *
      * @param ClientService $client
      */
-    public function __construct(protected Client $client)
+    public function __construct(protected ClientService $client)
     {
         /**
          * Authentication for vimeo must be in services

@@ -8,98 +8,6 @@ use GuzzleHttp\Client;
 
 class ClientService extends Client
 {
-    /**
-     * Prefix for configuration
-     *
-     * @param string ALLOWED_METHODS
-     */
-    private const ALLOWED_METHODS = ['get', 'post', 'put', 'delete', 'patch'];
-
-    /**
-     * Set Method of the request
-     *
-     * @param string $method
-     */
-    private string $method;
-
-    /**
-     * Set URI for of request
-     *
-     * @param string $uri
-     */
-    private string $uri;
-
-    /**
-     * Set the body of the request
-     *
-     * @param string $body
-     */
-    private array $body;
-
-    /**
-     * Set the headers of the request
-     *
-     * @param string $headers
-     */
-    private array $headers;
-
-    /**
-     * Constructor
-     *
-     * @param Client $client
-     */
-    public function __construct(protected Client $client)
-    {
-    }
-
-    public static function create(): self
-    {
-        return new self;
-    }
-
-    public function setURI(string $uri): self
-    {
-        $this->uri = $uri;
-        return $this;
-    }
-
-    public function setMethod(string $method): self
-    {
-        if (!in_array(strtolower($method), self::ALLOWED_METHODS)) {
-            throw new GeneralException(message: 'Method should be of the following type: ' . implode(', ', self::ALLOWED_METHODS));
-        }
-
-        $this->method = $method;
-        return $this;
-    }
-
-    public function setHeaders(array $headers = []): self
-    {
-        $this->headers = $headers;
-        return $this;
-    }
-
-    public function setBoody(array $body = []): self
-    {
-        $this->body = $body;
-        return $this;
-    }
-
-    public function call()
-    {
-        try {
-            $attempt = $this->client->{$this->method}($this->uri, [
-                'headers' => $this->headers,
-                'json' => $this->body
-            ]);
-
-            return json_decode($attempt->getBody(), true);
-        } catch (RequestException $e) {
-            throw new GeneralException(message: $e->getMessage(), code: $e->getCode());
-        }
-    }
-
-
     // TODO:: Add events for the streaming
     /**
      * Stream the file in chunks and upload it to Vimeo.
@@ -111,7 +19,7 @@ class ClientService extends Client
      * @throws GeneralException
      * @return array The upload status and progress.
      */
-    public function streamFile(string $uri, string $filePath, int $chunkSize, int $offset = 0): array
+    public function streamFile(string $uri, string $filePath, int $chunkSize, int $offset = 0, array $headers = []): array
     {
         $log = '';
         $progress = 0;
@@ -124,8 +32,8 @@ class ClientService extends Client
         try {
             for ($currentChunk = 0; $currentChunk < $fileInfo['chunks']; $currentChunk++) {
                 $chunkData = getChunkOffset($stream, $currentChunk, $chunkSize);
-                $this->client->patch($uri, [
-                    'headers' => array_merge($this->headers, [
+                $this->patch($uri, [
+                    'headers' => array_merge($headers, [
                         'Content-Type' => 'application/offset+octet-stream',
                         'Upload-Offset' => $chunkData['offset'],
                         'Tus-Resumable' => '1.0.0',

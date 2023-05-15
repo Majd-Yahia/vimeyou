@@ -44,7 +44,7 @@ if (!function_exists('getChunkOffset')) {
      * 
      * @return array The chunk data and offset
      */
-    function getChunkOffset(resource $stream, int $currentChunk, int $chunkSize): array
+    function getChunkOffset($stream, int $currentChunk, int $chunkSize): array
     {
         $chunk = fread($stream, $chunkSize);
         $offset = $currentChunk * $chunkSize;
